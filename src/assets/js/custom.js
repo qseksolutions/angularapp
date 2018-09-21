@@ -14,46 +14,40 @@
     
 $(document).ready(function () {
     $('#open-card').click(function(){
-    $('.show-card').slideToggle();
-});
-
-    // var sections = $('.scroll-sec')
-    //   , nav = $('.main-header')
-    //   , nav_height = nav.outerHeight();
-
-    // $(window).on('scroll', function () {
-    //   var cur_pos = $(this).scrollTop();
-      
-    //   sections.each(function() {
-    //     var top = $(this).offset().top - nav_height - 10 ,
-    //         bottom = top + $(this).outerHeight();
-        
-    //     if (cur_pos >= top && cur_pos <= bottom) {
-    //       nav.find('a').removeClass('active');
-    //       sections.removeClass('active');
-          
-    //       $(this).parent().addClass('active');
-    //       nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
-    //     }
-    //   });
-    // });
-
-    // nav.find('a').on('click', function () {
-    //   var $el = $(this)
-    //     , id = $el.attr('href');
-      
-    //   $('html, body').animate({
-    //     scrollTop: $(id).offset().top - nav_height
-    //   }, 500);
-      
-    //   return false;
-    // });
-    
-    //  $('.navbar-toggler').click(function(){
-    //     $('body').toggleClass('block-scroll');
-    //     $('.navbar-toggler').toggleClass('show-icon');
-    // });
-
+      $('.show-card').slideToggle();
+    });
+  $('#go-register').click(function () {
+    setTimeout(function () {
+      $('#register-card').removeClass('d-none');
+      $('#login-card').addClass('d-none');
+    }, 500);
+    $('#login-card').addClass('fadeIn');
+    $('#register-card').removeClass('fadeIn');
+  });
+  $('#back-r_login').click(function () {
+    setTimeout(function () {
+      $('#register-card').addClass('d-none');
+      $('#login-card').removeClass('d-none');
+    }, 500);
+    $('#register-card').addClass('fadeIn');
+    $('#login-card').removeClass('fadeIn');
+  });
+  $('#goforgot').click(function () {
+    setTimeout(function () {
+      $('#forgot-card').removeClass('d-none');
+      $('#login-card').addClass('d-none');
+    }, 500);
+    $('#forgot-card').removeClass('fadeIn');
+    $('#login-card').addClass('fadeIn');
+  });
+  $('#back-f_login').click(function () {
+    setTimeout(function () {
+      $('#forgot-card').addClass('d-none');
+      $('#login-card').removeClass('d-none');
+    }, 500);
+    $('#forgot-card').addClass('fadeIn');
+    $('#login-card').removeClass('fadeIn');
+  });
 });
 
 function readURL(input) {

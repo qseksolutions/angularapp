@@ -3,13 +3,13 @@
     <div class="container h-100">
       <div class="row align-items-center h-100">
         <div class="col-12 col-sm-12 col-md-8 col-lg-6 m-auto">
-          <div class="card custom-card">
+          <div id="login-card" class="card custom-card animated mb-0">
             <div class="card-header">
               <h4>Login</h4>
             </div>
             <div class="card-body">
               <div class="card-text">
-                <h4>dashboard</h4>
+                <h4>Dashboard</h4>
                 <p>Manage your company stocks with us</p>
               </div>
 
@@ -23,20 +23,120 @@
                     </div>
                     <div class="form-group">
                       <label class="form-label">Enter password</label>
-                      <input class="form-control" type="email" name="" placeholder="Enter password" />
+                      <input class="form-control" type="password" name="" placeholder="Enter password" />
                       <span class="form-control_focus"></span>
                     </div>
                   </div>
 
                   <div class="u-form-btn">
-                    <button class="btn btn-primary">Login <span class="btn-bg-icon"><i class="fas fa-sign-in-alt"></i></span></button>
+                    <button class="btn btn-primary">Login
+                      <span class="btn-bg-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                      </span>
+                    </button>
 
-                    <a href="#" class="btn btn-link text-dark text-capitalize">Forgot password ?</a>
+                    <a href="javascript:void(0);" id="goforgot" class="btn btn-link text-dark text-capitalize">Forgot password ?</a>
                   </div>
                 </form>
 
                 <div class="u-next_direct">
-                  <p>You don't have an account yet? <a href="#" class="btn-link">Register</a></p>
+                  <p>You don't have an account yet?
+                    <a href="javascript:void(0);" id="go-register" class="btn-link">Register</a>
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="register-card" class="card custom-card d-none animated mb-0">
+            <div class="card-header">
+              <h4>Register</h4>
+            </div>
+            <div class="card-body">
+              <div class="card-text">
+                <h4>Dashboard</h4>
+                <p>Create a new account</p>
+              </div>
+
+              <div class="u-entr_form">
+                <form>
+                  <div class="list-form-group">
+                    <div class="form-group">
+                      <label class="form-label">Enter name</label>
+                      <input class="form-control" type="name" name="" placeholder="Enter name" required />
+                      <span class="form-control_focus"></span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Enter email</label>
+                      <input class="form-control" type="email" name="" placeholder="Enter email" required />
+                      <span class="form-control_focus"></span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Enter password</label>
+                      <input class="form-control" type="password" name="" placeholder="Enter password" />
+                      <span class="form-control_focus"></span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Enter company name</label>
+                      <input class="form-control" type="name" name="" placeholder="Enter company name" required />
+                      <span class="form-control_focus"></span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Enter company category</label>
+                      <input class="form-control" type="name" name="" placeholder="Enter company category" required />
+                      <span class="form-control_focus"></span>
+                    </div>
+                  </div>
+
+                  <div class="u-form-btn">
+                    <button class="btn btn-primary">Register
+                      <span class="btn-bg-icon">
+                        <i class="far fa-user"></i>
+                      </span>
+                    </button>
+                  </div>
+                </form>
+
+                <div class="u-next_direct">
+                  <p>Back to ?
+                    <a href="javascript:void(0);" id="back-r_login" class="btn-link">Login</a>
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="forgot-card" class="card custom-card d-none animated mb-0">
+            <div class="card-header">
+              <h4>Forgot password</h4>
+            </div>
+            <div class="card-body">
+
+              <div class="u-entr_form">
+                <form>
+                  <div class="list-form-group">
+                    <div class="form-group">
+                      <label class="form-label">Enter email</label>
+                      <input class="form-control" type="email" name="" placeholder="Enter email" required />
+                      <span class="form-control_focus"></span>
+                    </div>
+                  </div>
+
+                  <div class="u-form-btn">
+                    <button class="btn btn-primary">Submit
+                      <span class="btn-bg-icon">
+                        <i class="fas fa-angle-right"></i>
+                      </span>
+                    </button>
+                  </div>
+                </form>
+
+                <div class="u-next_direct">
+                  <p>Back to ?
+                    <a href="javascript:void(0);" id="back-f_login" class="btn-link">Login</a>
+                  </p>
 
                 </div>
               </div>
