@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
-import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
+import { ToasterService } from 'angular2-toaster';
 
 declare var $;
 
