@@ -2,39 +2,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
+import * as myGlobals from './global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) {
+  header: any = myGlobals.header;
+  api_url: any = myGlobals.api_url;
 
-  }
+  ExcelinsertAPI: any = myGlobals.ExcelinsertAPI;
 
-  getcurrencylist(): Observable<any>{
-    // const endpoint = ;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'header': 'a2309455-13c0-4b5a-b9c1-5e9e65dc0704'
-      })
-    };
+  // userid: any = localStorage.getItem('id');
+  // useremail: any = localStorage.getItem('email');
 
-    // return this.http.get('https://qseksolutions.com/api/example/users').map((res: any) => res.json());
-    return this.http.get('https://qseksolutions.com/api/example/users', httpOptions).pipe(
-      map((res: any) => res));
-  }
+  constructor(private http: HttpClient) { }
 
+  /* EXCEL SHEET UPLOAD AND SAVE DATA */
   insertdata(data): Observable<any> {
-    const endpoint = 'https://qseksolutions.com/api/example/insert';
+    const endpoint = this.api_url;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'header': 'a2309455-13c0-4b5a-b9c1-5e9e65dc0704'
+        'header': this.header
       })
     };
-
     var idata = { 'product': data};
 
     return this.http.post(endpoint, idata, httpOptions).pipe(
