@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
 body {
     font-family: 'Lato', sans-serif;
-    background-color: #f0f0f0;
-    color: #424056;
+    background-color: #f4f8f9;
+    color: #272e40;
     font-weight: 400;
     font-size: 14px;
     height: 100vh;
@@ -57,8 +57,8 @@ a:hover ,
 }
 .btn-primary {
     color: #fff;
-    background-color: #497ffd;
-    border-color: #497ffd;
+    background-color: #198cff;
+    border-color: #198cff;
     -webkit-box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
     box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
 }
@@ -97,13 +97,22 @@ section {
 } 
 /*header-start*/
 .main-header {
-    background-color: #497ffd;
+    background-color: #ffffff;
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    padding-left: 20%;
+    z-index: 5;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
 }
 .main-header .dropdown-menu.show {
-    margin-top: 20px;
+    margin-top: 10px;
+    right: 0;
+    width: 200px;
+    left: unset;
 }
 .navbar {
-    padding: 15px;
+    padding: 10px 0px;
     justify-content: space-between;
 }
 .dashboard-toggler {
@@ -112,7 +121,6 @@ section {
 }
 .dashboard-toggler h4 {
     margin-bottom: 0px;
-    color: #fff;
     font-weight: 500;
     margin-left: 20px;
     font-size: 22px;
@@ -133,7 +141,7 @@ section {
 }
 .nav-link {
     padding: 10px 15px;
-    color: #ffffff;
+    color: #272e40;
     -webkit-transition: all ease 0.5s;
     -o-transition: all ease 0.5s;
     transition: all ease 0.5s;
@@ -143,20 +151,14 @@ section {
 .nav-item.active .nav-link ,
 .nav-item .nav-link.active {
     opacity: 1;
-    color: #ffffff;
+    color: #1a1f2c;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 5px;
     padding-left: 15px;
 }
-.nav-menu .nav-item:last-child .nav-link {
-    background-color: rgba(30, 71, 225, 0.2);
-    opacity: 1;
-    border: solid 1.5px #fff;
-    border-radius: 25px;
-}
 .main-header.fixed-header {
-    background: #497ffd;
+    background: #198cff;
     position: fixed;
     left: 0px;
     right: 0px;
@@ -165,14 +167,10 @@ section {
     z-index: 5;
 }
 .dash-toggler_icon svg {
-    fill: #ffffff;
+    fill: #272e40;
 }
 /*header-end*/
 /*dashboard-start*/
-.right-sidebar {
-    float: left;
-    width: 75%;
-}
 .min-height_fluid {
     height: calc(100vh - 75px);
     overflow: hidden;
@@ -181,8 +179,18 @@ section {
     background-color: #ffffff;
     border-right: solid 1px #ddd;
     float: left;
-    width: 25%;
+    width: 20%;
     height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 8;
+    padding-top: 70px;
+}
+.right-sidebar {
+    float: left;
+    width: 80%;
+    margin-left: 20%;
+    margin-top: 60px;
 }
 .dash-nav_tab {
     flex-direction: column;
@@ -206,7 +214,7 @@ section {
 .nav-pills .nav-link:focus, 
 .nav-pills .nav-link:hover {
     color: #fff;
-    background-color: #497ffd;  
+    background-color: #198cff;  
 }
 .rightbar  {
     padding: 50px;
@@ -278,19 +286,21 @@ section {
     right: 0;
     top: 0;
     z-index: 5;
-    background-color: #497ffd;
+    background-color: #198cff;
     padding: 6px;
     width: 35px;
     height: 35px;
     color: #fff;
 }
-
+.ulpad-btn {
+    text-align: right;  
+}
 /*login-start*/
 .user-entr_wrapper {
     height: 100%;
 }
 .custom-card .card-header {
-    background-color: #497ffd;
+    background-color: #198cff;
     color: #ffffff;
     border-radius: 0px;
     padding: 15px 30px;
