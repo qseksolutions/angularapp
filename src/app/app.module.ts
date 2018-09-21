@@ -13,9 +13,13 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+<<<<<<< HEAD
 import { ProductComponent } from './product/product.component';
 import { CustomerComponent } from './customer/customer.component';
 import { OrderComponent } from './order/order.component';
+=======
+import { SidebarComponent } from './sidebar/sidebar.component';
+>>>>>>> 3a6f639d7e8c6e754dd7339bb87dbf8f57734ca2
 
 @NgModule({
   declarations: [
@@ -24,9 +28,13 @@ import { OrderComponent } from './order/order.component';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
+<<<<<<< HEAD
     ProductComponent,
     CustomerComponent,
     OrderComponent
+=======
+    SidebarComponent
+>>>>>>> 3a6f639d7e8c6e754dd7339bb87dbf8f57734ca2
   ],
   imports: [
     RouterModule.forRoot([
