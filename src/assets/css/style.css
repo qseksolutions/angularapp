@@ -206,7 +206,7 @@ section {
 .nav-pills .nav-link:focus, 
 .nav-pills .nav-link:hover {
     color: #fff;
-    background-color: #497ffd;
+    background-color: #497ffd;  
 }
 .rightbar  {
     padding: 50px;
