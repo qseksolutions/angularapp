@@ -42,6 +42,21 @@ import { SidebarComponent } from './sidebar/sidebar.component';
         component: LoginComponent,
         pathMatch: 'full'
       },
+      {
+        path: 'product',
+        component: ProductComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'customers',
+        component: CustomerComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'order',
+        component: OrderComponent,
+        pathMatch: 'full'
+      },
     ]),
     BrowserModule,
     HttpModule,
