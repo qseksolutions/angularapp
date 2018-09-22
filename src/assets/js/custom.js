@@ -13,10 +13,10 @@
     
     
 $(document).ready(function () {
-    $('#open-card').click(function(){
+  $(document).on('click', '#open-card',function(){
       $('.show-card').slideToggle();
     });
-  $('#go-register').click(function () {
+  $(document).on('click', '#go-register',function () {
     setTimeout(function () {
       $('#register-card').removeClass('d-none');
       $('#login-card').addClass('d-none');
@@ -24,7 +24,7 @@ $(document).ready(function () {
     $('#login-card').addClass('fadeIn');
     $('#register-card').removeClass('fadeIn');
   });
-  $('#back-r_login').click(function () {
+  $(document).on('click','#back-r_login',function () {
     setTimeout(function () {
       $('#register-card').addClass('d-none');
       $('#login-card').removeClass('d-none');
@@ -32,7 +32,7 @@ $(document).ready(function () {
     $('#register-card').addClass('fadeIn');
     $('#login-card').removeClass('fadeIn');
   });
-  $('#goforgot').click(function () {
+  $(document).on('click','#goforgot',function () {
     setTimeout(function () {
       $('#forgot-card').removeClass('d-none');
       $('#login-card').addClass('d-none');
@@ -40,7 +40,7 @@ $(document).ready(function () {
     $('#forgot-card').removeClass('fadeIn');
     $('#login-card').addClass('fadeIn');
   });
-  $('#back-f_login').click(function () {
+  $(document).on('click','#back-f_login',function () {
     setTimeout(function () {
       $('#forgot-card').addClass('d-none');
       $('#login-card').removeClass('d-none');
@@ -77,8 +77,8 @@ function removeUpload() {
   $('.image-upload-wrap').show();
 }
 $('.image-upload-wrap').bind('dragover', function () {
-        $('.image-upload-wrap').addClass('image-dropping');
-    });
-    $('.image-upload-wrap').bind('dragleave', function () {
-        $('.image-upload-wrap').removeClass('image-dropping');
+    $('.image-upload-wrap').addClass('image-dropping');
+});
+$('.image-upload-wrap').bind('dragleave', function () {
+    $('.image-upload-wrap').removeClass('image-dropping');
 });

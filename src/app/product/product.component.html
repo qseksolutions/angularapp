@@ -1,6 +1,17 @@
 <div class="content-wrapper right-sidebar">
   <div class="rightbar">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+    <div class="page-breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Library</li>
+      </ol>
+
+      <h2>Product</h2>
+    </div>
+    <ul class="nav product-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="all-product-tab" data-toggle="tab" href="#all-product" role="tab" aria-controls="all-product" aria-selected="true">All Product</a>
       </li>
@@ -8,14 +19,70 @@
         <a class="nav-link" id="sell-tab" data-toggle="tab" href="#sell" role="tab" aria-controls="sell" aria-selected="false">Sell Product</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="courier-tab" data-toggle="tab" href="#courier" role="tab" aria-controls="courier" aria-selected="false">courier return</a>
+        <a class="nav-link" id="courier-tab" data-toggle="tab" href="#courier" role="tab" aria-controls="courier" aria-selected="false">Courier return</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="customer-tab" data-toggle="tab" href="#customer" role="tab" aria-controls="customer" aria-selected="false">Customer return</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="all-product" role="tabpanel" aria-labelledby="all-product-tab">...</div>
+      <div class="tab-pane fade show active" id="all-product" role="tabpanel" aria-labelledby="all-product-tab">
+        <div class="all-product-list"> 
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order id</th>
+                <th>Order item id</th>
+                <th>Product</th>
+                <th>Sell price</th>
+                <th>Marketplace Fee</th>
+                <th>tex</th>
+                <th>Earning</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>#12</td>
+                <td>Iphone xs Max</td>
+                <td>$999</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>#12</td>
+                <td>Iphone xs Max</td>
+                <td>$999</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>#12</td>
+                <td>Iphone xs Max</td>
+                <td>$999</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>#12</td>
+                <td>Iphone xs Max</td>
+                <td>$999</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
       <div class="tab-pane fade" id="courier" role="tabpanel" aria-labelledby="courier-tab">...</div>
       <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer-tab">...</div>
