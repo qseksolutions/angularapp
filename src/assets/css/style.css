@@ -252,7 +252,8 @@ section {
 	padding: 50px;
 }
 .card {
-	margin-bottom: 25px;
+    margin-bottom: 25px;
+    border-radius: 5px;
 }
 .custom-card {
 	background: #fff;
@@ -264,7 +265,6 @@ section {
 }
 .show-card {
 	margin-bottom: 25px;
-	padding: 20px;
 }
 .file-upload {
 	background-color: #ffffff;
@@ -395,17 +395,21 @@ section {
 .product-tabs .nav-link:hover::after,
 .product-tabs .nav-item.active .nav-link::after,
 .product-tabs .nav-item .nav-link.active::after {
-	width: 100%;
+    width: 100%;
 }
-.all-product-list table {
-	margin: 30px 0;
+.tab-content {
+    margin-top: 30px;
+}
+.custom-table {
+    margin-bottom: 0px;
 	width: 100%;
-	border-radius: 5px;
-	overflow: hidden;
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.01);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.01);
+    border-radius: 5px;
+    overflow: hidden;
 }
 .custom-table thead {
-	background-color: #e7eef0;
+    background-color: #198cff;
+    color: #ffffff;
 }
 .table.custom-table thead th {
 	border-top: none;

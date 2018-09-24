@@ -1,15 +1,34 @@
 <div class="content-wrapper right-sidebar" [ngClass]="toggle==1?'full-rightbar':''">
   <div class="rightbar">
-
-    <div class="page-breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Home</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Order</li>
-      </ol>
-
-      <h2>Order</h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 m-auto">
+          <div class="ulpad-btn mb-4">
+            <button class="btn btn-primary btn-upload" id="open-card">Upload file</button>
+          </div>
+          <div class="card show-card" style="display: none;">
+            <div class="card-body">
+              <div class="file-upload">
+                <div class="image-upload-wrap">
+                  <input class="file-upload-input" type='file' (change)="incomingfile($event)" accept=".xlsx" />
+                  <div class="drag-text">
+                    <h3>Select or drop file</h3>
+                  </div>
+                </div>
+                <div class="file-upload-content">
+                  <img class="file-upload-image" src="../../assets/images/excel.png" alt="your image" />
+                  <div class="image-title-wrap">
+                    <button type="button" class="btn btn-default excel_name"></button>
+                    <p>
+                      <button type="button" class="btn btn-danger m-t-10" onclick="removeUpload()">Remove upload file</button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <ul class="nav product-tabs" id="myTab" role="tablist">
       <li class="nav-item">
@@ -28,7 +47,7 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="all-product" role="tabpanel" aria-labelledby="all-product-tab">
-        <div class="all-product-list">
+        <div class="card">
           <table class="table custom-table">
             <thead>
               <tr>
@@ -37,11 +56,11 @@
                 <th>Product</th>
                 <th>Sell price</th>
                 <th>Marketplace fee</th>
-                <th>tax</th>
+                <th>Tax</th>
                 <th>Earning</th>
               </tr>
             </thead>
-
+          
             <tbody>
               <tr>
                 <td>1</td>
@@ -53,40 +72,208 @@
                 <td>$100</td>
               </tr>
               <tr>
-                <td>1</td>
-                <td>#12</td>
-                <td>Iphone xs Max</td>
-                <td>$999</td>
+                <td>2</td>
+                <td>#13</td>
+                <td>Iphone xs </td>
+                <td>$799</td>
+                <td>$8</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>#13</td>
+                <td>Iphone xr</td>
+                <td>$599</td>
                 <td>$10</td>
                 <td>$5</td>
                 <td>$100</td>
               </tr>
               <tr>
-                <td>1</td>
-                <td>#12</td>
-                <td>Iphone xs Max</td>
-                <td>$999</td>
+                <td>4</td>
+                <td>#14</td>
+                <td>Iphone x</td>
+                <td>$499</td>
                 <td>$10</td>
                 <td>$5</td>
                 <td>$100</td>
               </tr>
-              <tr>
-                <td>1</td>
-                <td>#12</td>
-                <td>Iphone xs Max</td>
-                <td>$999</td>
-                <td>$10</td>
-                <td>$5</td>
-                <td>$100</td>
-              </tr>
-
+          
             </tbody>
           </table>
         </div>
       </div>
-      <div class="tab-pane fade" id="sell" role="tabpanel" aria-labelledby="sell-tab">...</div>
-      <div class="tab-pane fade" id="courier" role="tabpanel" aria-labelledby="courier-tab">...</div>
-      <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer-tab">...</div>
+      <div class="tab-pane fade" id="sell" role="tabpanel" aria-labelledby="sell-tab">
+        <div class="card">
+          <table class="table custom-table">
+            <thead>
+              <tr>
+                <th>Order id</th>
+                <th>Order item id</th>
+                <th>Product</th>
+                <th>Sell price</th>
+                <th>Marketplace fee</th>
+                <th>Tax</th>
+                <th>Earning</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>#12</td>
+                <td>Iphone xs Max</td>
+                <td>$999</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>#13</td>
+                <td>Iphone xs </td>
+                <td>$799</td>
+                <td>$8</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>#13</td>
+                <td>Iphone xr</td>
+                <td>$599</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>#14</td>
+                <td>Iphone x</td>
+                <td>$499</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+          
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="courier" role="tabpanel" aria-labelledby="courier-tab">
+        <div class="card">
+          <table class="table custom-table">
+            <thead>
+              <tr>
+                <th>Order id</th>
+                <th>Order item id</th>
+                <th>Product</th>
+                <th>Sell price</th>
+                <th>Marketplace fee</th>
+                <th>Tax</th>
+                <th>Earning</th>
+              </tr>
+            </thead>
+        
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>#12</td>
+                <td>Iphone xs Max</td>
+                <td>$999</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>#13</td>
+                <td>Iphone xs </td>
+                <td>$799</td>
+                <td>$8</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>#13</td>
+                <td>Iphone xr</td>
+                <td>$599</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>#14</td>
+                <td>Iphone x</td>
+                <td>$499</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+        
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer-tab">
+        <div class="card">
+          <table class="table custom-table">
+            <thead>
+              <tr>
+                <th>Order id</th>
+                <th>Order item id</th>
+                <th>Product</th>
+                <th>Sell price</th>
+                <th>Marketplace fee</th>
+                <th>Tax</th>
+                <th>Earning</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>#12</td>
+                <td>Iphone xs Max</td>
+                <td>$999</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>#13</td>
+                <td>Iphone xs </td>
+                <td>$799</td>
+                <td>$8</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>#13</td>
+                <td>Iphone xr</td>
+                <td>$599</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>#14</td>
+                <td>Iphone x</td>
+                <td>$499</td>
+                <td>$10</td>
+                <td>$5</td>
+                <td>$100</td>
+              </tr>
+          
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

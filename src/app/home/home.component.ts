@@ -3,6 +3,8 @@ import * as XLSX from 'xlsx';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { ToasterService } from 'angular2-toaster';
+import { Chart } from 'chart.js';
+
 
 declare var $;
 
@@ -22,6 +24,7 @@ export class HomeComponent implements OnInit {
   fileReaded: any;
   arrayBuffer: any;
   file: File;
+  linechart: any;
 
   constructor(private apiservice: ApiService, private router: Router, toasterService: ToasterService) {
     this.toasterService = toasterService;
@@ -31,7 +34,108 @@ export class HomeComponent implements OnInit {
     /* this.apiservice.getcurrencylist().subscribe(data => {
       console.log(data);
     }); */
+    
+    var data = {
+      
+      labels: ["April", "May", "June", "July", "August", "September"],
+      datasets: [
+        {
+          label: "Harpo",
+          backgroundColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(54, 162, 235, 1)',
+          ],
+          fill: true,
+          borderColor: "#3cba9f",
+          borderWidth: 0,
+          data: [35, 30, 40, 20, 47, 30]
+        },
+        {
+          label: "Chico",
+          backgroundColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 206, 86, 1)',
+          ],
+          fill: true,
+          borderColor: "#3cba9f",
+          borderWidth: 0,
+          data: [75, 40, 31, 70, 30, 70]
+        },
+        {
+          label: "Groucho",
+          backgroundColor: [
+            'rgba(75, 192, 192, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(75, 192, 192, 1)',
+          ],
+          fill: true,
+          borderColor: "#3cba9f",
+          borderWidth: 0,
+          data: [35, 70, 47, 30, 70, 40]
+        }
+      ],
+    };
+
+    this.linechart = new Chart('canvas', {
+      type: 'bar',
+      data: data,
+      options: {
+        elements: {
+          rectangle: {
+            borderWidth: 0,
+          }
+        },
+        
+        tooltips: {
+          mode: 'index',
+          intersect: true,
+          borderWidth: 0,
+          callbacks: {
+            label: function (tooltipItem, data) {
+              let Harpo = data.datasets[tooltipItem.datasetIndex].label;
+              let valor = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+              let total = 0;              
+              if (tooltipItem.datasetIndex != data.datasets.length - 1) {
+                return Harpo + " : $" + valor;
+                // return Harpo + " : $" + valor.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+              } else {
+                return [Harpo + " : $" + valor, "Total : $" + total];
+                // return [Harpo + " : $" + valor.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'), "Total : $" + total];
+              }
+            }
+          }
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: 0,
+            },
+            gridLines: {
+              drawBorder: false,
+            },
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false,
+            },
+          }]
+        }
+      }
+    });
   }
+  
   convertFile(csv: any) {
 
     /* this.fileReaded = csv.target.files[0];
