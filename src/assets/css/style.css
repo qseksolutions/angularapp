@@ -105,6 +105,10 @@ section {
     padding-left: 20%;
     z-index: 5;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+    transition: all ease-in-out 0.3s;
+}
+.main-header.full-header {
+    padding-left: 5%;
 }
 .main-header .dropdown-menu.show {
     margin-top: 10px;
@@ -143,9 +147,9 @@ section {
 .nav-link {
     padding: 10px 15px;
     color: #272e40;
-    -webkit-transition: all ease 0.5s;
-    -o-transition: all ease 0.5s;
-    transition: all ease 0.5s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    transition: all ease 0.3s;
 }
 .nav-link:focus, 
 .nav-link:hover ,
@@ -182,10 +186,14 @@ section {
     float: left;
     width: 20%;
     height: 100%;
+    padding-top: 60px;
     position: fixed;
     top: 0;
     z-index: 8;
-    padding-top: 70px;
+    transition: all ease-in-out 0.3s;
+}
+.sidebar.icon-sidebar {
+    width: 5%;
 }
 .right-sidebar {
     float: left;
@@ -194,10 +202,16 @@ section {
     margin-top: 60px;
     height: 100%;
     overflow: auto;
+    transition: all ease-in-out 0.3s;
+}
+.right-sidebar.full-rightbar {
+    width: 95%;
+    margin-left: 5%;
 }
 .dash-nav_tab {
     flex-direction: column;
-    padding: 25px;
+    padding: 15px 25px;
+    transition: all ease-in-out 0.3s;
 }
 .dash-nav_tab .nav-menu_lable {
     color: #000;
@@ -211,6 +225,7 @@ section {
     margin-bottom: 5px;
     margin-top: 5px;
     background-color: #f3f3f3;
+    white-space: nowrap;
 }
 .nav-pills .nav-link.active, 
 .nav-pills .show>.nav-link ,
@@ -218,6 +233,17 @@ section {
 .nav-pills .nav-link:hover {
     color: #fff;
     background-color: #198cff;  
+}
+.tab-text {
+    margin-left: 15px;
+    transition: all ease-in-out 0.3s;
+}
+.icon-sidebar .tab-text {
+    font-size: 0px;
+    margin-left: 0px;
+}
+.icon-sidebar .dash-nav_tab {
+    padding: 15px;
 }
 .rightbar  {
     padding: 50px;
@@ -371,7 +397,20 @@ section {
 .all-product-list table {
     margin: 30px 0;
     width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.01);
 }
+.custom-table thead {
+    background-color: #e7eef0;
+}
+.table.custom-table thead th {
+    border-top: none;
+    border-bottom: none;
+}
+.custom-table tbody {
+    background-color: #ffffff;
+} 
 /*product-end*/
 
 /*login-start*/
