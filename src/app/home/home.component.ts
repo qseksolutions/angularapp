@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   private toasterService: ToasterService;
   totalcount: any;
-  // count: any = 0;
+  toggle = localStorage.getItem('sidebartoggle');
   public count: number = 0;
   data: any;
   fileReaded: any;

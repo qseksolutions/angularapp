@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
+  toggle = localStorage.getItem('sidebartoggle');
+
   constructor() { }
 
   ngOnInit() {

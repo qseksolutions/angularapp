@@ -11,9 +11,10 @@ export class SidebarComponent implements OnInit {
   public base_url: any = myGlobals.base_url;
   public url = window.location.pathname;
   tabs : string = '';
+  toggle = localStorage.getItem('sidebartoggle');
   
   constructor() {
-    console.log(this.url);
+    this.tabs = this.url.substr(1);
   }
 
   ngOnInit() {

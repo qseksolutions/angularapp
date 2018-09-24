@@ -1,8 +1,8 @@
-<header class="main-header">
+<header class="main-header" [ngClass]="toggle==0?'full-header':''">
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg">
       <div class="dashboard-toggler">
-        <button class="btn btn-icon dash-toggler_icon">
+        <button class="btn btn-icon dash-toggler_icon" (click)="sidebartoggle(toggle)">
           <svg viewBox="0 0 26 26" version="1.1" width="20px" height="20px" fill="#272e40">
             <g id="surface1">
               <path d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z " />

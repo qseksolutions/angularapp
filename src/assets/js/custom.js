@@ -49,11 +49,11 @@ $(document).ready(function () {
     $('#login-card').removeClass('fadeIn');
   });
 
-  $(document).on('click', '.dash-toggler_icon' , function(){
+  /* $(document).on('click', '.dash-toggler_icon' , function(){
     $('.sidebar').toggleClass('icon-sidebar');
     $('.right-sidebar').toggleClass('full-rightbar');
     $('.main-header').toggleClass('full-header')
-  });
+  }); */
 });
 
 function readURL(input) {

@@ -14,9 +14,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { ProductComponent } from './product/product.component';
-import { CustomerComponent } from './customer/customer.component';
 import { OrderComponent } from './order/order.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +26,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     FooterComponent,
     LoginComponent,
     ProductComponent,
-    CustomerComponent,
     OrderComponent,
-    SidebarComponent
+    SidebarComponent,
+    ReportComponent
   ],
   imports: [
     RouterModule.forRoot([
@@ -48,8 +48,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
         pathMatch: 'full'
       },
       {
-        path: 'customers',
-        component: CustomerComponent,
+        path: 'reports',
+        component: ReportComponent,
         pathMatch: 'full'
       },
       {
