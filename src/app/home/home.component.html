@@ -1,40 +1,42 @@
 <div class="content-wrapper right-sidebar" [ngClass]="toggle==1?'full-rightbar':''">
-    <div class="rightbar">
-        <div class="tab-pane fade show active" id="v-pill-one" role="tabpanel" aria-labelledby="v-pill-one-tab">
-          <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 m-auto">
-              <div class="ulpad-btn mb-4">
-                <button class="btn btn-primary btn-upload" id="open-card">Upload file</button>
+  <div class="rightbar">
+    <div class="tab-pane fade show active" id="v-pill-one" role="tabpanel" aria-labelledby="v-pill-one-tab">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 m-auto">
+          <div class="ulpad-btn mb-4">
+            <button class="btn btn-primary btn-upload" id="open-card">Upload file</button>
+          </div>
+          <div class="card show-card" style="display: none;">
+            <div class="file-upload">
+              <div class="image-upload-wrap">
+                <input class="file-upload-input" type='file' (change)="incomingfile($event)" accept=".xlsx" />
+                <div class="drag-text">
+                  <h3>Select or drop file</h3>
+                </div>
               </div>
-              <div class="card show-card" style="display: none;">
-                <div class="file-upload">
-                  <div class="image-upload-wrap">
-                    <input class="file-upload-input" type='file' (change)="incomingfile($event)" accept=".xlsx" />
-                    <div class="drag-text">
-                      <h3>Select or drop file</h3>
-                    </div>
-                  </div>
-                  <div class="file-upload-content">
-                    <img class="file-upload-image" src="../../assets/images/excel.png" alt="your image" />
-                    <div class="image-title-wrap">
-                      <button type="button" class="btn btn-default excel_name"></button>
-                      <p><button type="button" class="btn btn-danger m-t-10" onclick="removeUpload()">Remove upload file</button></p>
-                    </div>
-                  </div>
+              <div class="file-upload-content">
+                <img class="file-upload-image" src="../../assets/images/excel.png" alt="your image" />
+                <div class="image-title-wrap">
+                  <button type="button" class="btn btn-default excel_name"></button>
+                  <p>
+                    <button type="button" class="btn btn-danger m-t-10" onclick="removeUpload()">Remove upload file</button>
+                  </p>
                 </div>
               </div>
             </div>
-
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="card" style="height: 150px;"></div>
-            </div>
-
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="card chart-card">
-                <canvas id="canvas"></canvas>
-              </div>
-            </div>
           </div>
-        </div> 
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="card" style="height: 150px;"></div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="card chart-card">
+            <canvas id="canvas"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

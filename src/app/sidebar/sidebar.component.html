@@ -1,8 +1,20 @@
 <div class="sidebar" [ngClass]="toggle==1?'icon-sidebar':''">
   <div class="nav nav-pills  dash-nav_tab">
-    <a class="nav-link" [ngClass]="tabs==''?'active':''" (click)="sidebar('')" [routerLink]="['/']"> <i class="fas fa-home"></i> <span class="tab-text">Dashboard</span></a>
-    <a class="nav-link" [ngClass]="tabs=='order'?'active':''" (click)="sidebar('order')" [routerLink]="['/order']"> <i class="fab fa-first-order-alt"></i> <span class="tab-text">Order</span></a>
-    <a class="nav-link" [ngClass]="tabs=='product'?'active':''" (click)="sidebar('product')" [routerLink]="['/product']"> <i class="fab fa-product-hunt"></i> <span class="tab-text">Products</span></a>
-    <a class="nav-link" [ngClass]="tabs=='reports'?'active':''" (click)="sidebar('reports')" [routerLink]="['/reports']"> <i class="fas fa-users"></i> <span class="tab-text">Reports</span></a>
-  </div>  
-</div> 
+    <a class="nav-link" [ngClass]="tabs==''?'active':''" (click)="sidebar('')" [routerLink]="['/']">
+      <i class="fas fa-home"></i>
+      <span class="tab-text">Dashboard</span>
+    </a>
+    <a class="nav-link" [ngClass]="tabs=='order'?'active':''" (click)="sidebar('order')" [routerLink]="['/order']">
+      <i class="fab fa-first-order-alt"></i>
+      <span class="tab-text">Order</span>
+    </a>
+    <a class="nav-link" [ngClass]="tabs=='product'?'active':''" (click)="sidebar('product')" [routerLink]="['/product']">
+      <i class="fab fa-product-hunt"></i>
+      <span class="tab-text">Products</span>
+    </a>
+    <a class="nav-link" [ngClass]="tabs=='reports'?'active':''" (click)="sidebar('reports')" [routerLink]="['/reports']">
+      <i class="fas fa-users"></i>
+      <span class="tab-text">Reports</span>
+    </a>
+  </div>
+</div>
