@@ -54,6 +54,9 @@ $(document).ready(function () {
     $('.right-sidebar').toggleClass('full-rightbar');
     $('.main-header').toggleClass('full-header')
   }); */
+ /*  $('#datepicker').datepicker({
+    uiLibrary: 'bootstrap4'
+  }); */
 });
 
 function readURL(input) {

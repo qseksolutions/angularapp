@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -58,6 +59,7 @@ import { ReportComponent } from './report/report.component';
         pathMatch: 'full'
       },
     ]),
+    NgbModule,
     BrowserModule,
     HttpModule,
     HttpClientModule,

@@ -10,7 +10,7 @@
             <div class="card-body">
               <div class="file-upload">
                 <div class="image-upload-wrap">
-                  <input class="file-upload-input" type='file' (change)="incomingfile($event)" accept=".xlsx" />
+                  <input class="file-upload-input" type='file' (change)="incomingfile(event)" accept=".xlsx" />
                   <div class="drag-text">
                     <h3>Select or drop file</h3>
                   </div>
@@ -28,58 +28,138 @@
             </div>
           </div>
         </div>
-
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="card" >
-              <div class="card-body">
-                <div>
-                  <table class="table calcu-table">
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th>Product</th>
-                        <th>Total sell amount</th>
-                        <th>Market place fee</th>
-                        <th>Profit</th>
-                      </tr>
-                    </thead>
-                    
-                    <tbody>
-                      <tr>
-                        <th>Sell product</th>
-                        <td>2</td>
-                        <td>300$</td>
-                        <td>20$</td>
-                        <td>60$</td>
-                      </tr>
-                      <tr>
-                        <th>Courier return</th>
-                        <td>2</td>
-                        <td>300$</td>
-                        <td>20$</td>
-                        <td>60$</td>
-                      </tr>
-                      <tr>
-                        <th>Customer return</th>
-                        <td>2</td>
-                        <td>300$</td>
-                        <td>20$</td>
-                        <td>60$</td>
-                      </tr>
-                      <tr>
-                        <th>Total</th>
-                        <td>2</td>
-                        <td>300$</td>
-                        <td>20$</td>
-                        <td>60$</td>
-                      </tr>
-                    </tbody>
-                  </table>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                  <div class="card mb-0" >
+                    <div class="card-header">
+                      <h5 class="title">Product</h5>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled calc-list">
+                        <li>
+                          <label class="calc-label">Sell Product</label>
+                          <h6 class="calc-value">10</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Courier return</label>
+                          <h6 class="calc-value">1</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Customer return</label>
+                          <h6 class="calc-value">1</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Total</label>
+                          <h6 class="calc-value">8</h6>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                  <div class="card mb-0">
+                    <div class="card-header">
+                      <h5 class="title">Total sell amount</h5>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled calc-list">
+                        <li>
+                          <label class="calc-label">Sell Product</label>
+                          <h6 class="calc-value">₹ 150</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Courier return</label>
+                          <h6 class="calc-value">₹ 15</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Customer return</label>
+                          <h6 class="calc-value">₹ 15</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Total</label>
+                          <h6 class="calc-value">₹ 120</h6>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                  <div class="card mb-0">
+                    <div class="card-header">
+                      <h5 class="title">Market place fee</h5>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled calc-list">
+                        <li>
+                          <label class="calc-label">Sell Product</label>
+                          <h6 class="calc-value text-danger">₹ 15</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Courier return</label>
+                          <h6 class="calc-value text-danger">₹ 1.5</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Customer return</label>
+                          <h6 class="calc-value text-danger">₹ 1.5</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Total</label>
+                          <h6 class="calc-value text-danger">₹ 12</h6>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                  <div class="card mb-0">
+                    <div class="card-header">
+                      <h5 class="title">Profit/Loss</h5>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled calc-list">
+                        <li>
+                          <label class="calc-label">Sell Product</label>
+                          <h6 class="calc-value">₹ 135</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Courier return</label>
+                          <h6 class="calc-value">₹ 13.5</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Customer return</label>
+                          <h6 class="calc-value">₹ 13.5</h6>
+                        </li>
+                        <li>
+                          <label class="calc-label">Total</label>
+                          <h6 class="calc-value">₹ 108</h6>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
           </div>
         </div>
-
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="card chart-card">
             <div class="card-body">

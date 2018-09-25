@@ -203,7 +203,7 @@ to {
     }
 }
 .navbar {
-	padding: 10px 0px;
+	padding: 10px;
 	justify-content: space-between;
 }
 .dashboard-toggler {
@@ -221,9 +221,11 @@ to {
 .dashboard-title h4 {
 	margin-bottom: 0px;
 	font-weight: 500;
-	margin-left: 20px;
 	font-size: 22px;
 	text-transform: capitalize;
+}
+.dashboard-toggler h4 {
+	margin-left: 20px;
 }
 .icon-sidebar .dashboard-toggler button {
 	transition: all ease 0.3s;
@@ -569,6 +571,48 @@ to {
     border-radius: 5px;
     text-align: center;
     color: #198cff;
+}
+.calc-list {
+    margin-bottom: 0;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+.card-header {
+    background-color: #198cff;
+    color: #fff;
+    border-bottom: none;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.08);
+}
+.card-header:first-child {
+	border-radius: 4px 4px 0px 0px;
+}
+.card-header .title {
+	margin-bottom: 0px;
+	font-weight: 500;
+	font-size: 18px;
+}
+.calc-list li {
+	justify-content: space-between;
+    align-items: center;
+    display: flex;
+	padding: 10px 5px;
+    border-bottom: solid 1px #e5e8eb;
+}
+.calc-list li:first-child {
+	padding-top: 0px;
+}
+.calc-label {
+	margin-bottom: 0px;
+	width: 50%;
+	white-space: nowrap;
+	color: #929ca5;
+    font-weight: 500;
+}
+.calc-value {
+	margin-bottom: 0px;
+	width: 50%;
+	text-align: right;
+	font-weight: 600;
 }
 /*product-end*/
 
