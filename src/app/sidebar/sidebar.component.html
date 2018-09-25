@@ -1,18 +1,29 @@
-<div class="sidebar" [ngClass]="toggle==1?'icon-sidebar':''">
+<div class="sidebar" [ngClass]="toggle==0?'icon-sidebar':''">
+  <div class="dashboard-toggler">
+    <button class="btn btn-icon dash-toggler_icon" (click)="sidebartoggle(toggle)">
+      <svg viewBox="0 0 26 26" version="1.1" width="20px" height="20px" fill="#272e40">
+        <g id="surface1">
+          <path d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z " />
+        </g>
+      </svg>
+    </button>
+
+    <h4>Softpedia</h4>
+  </div>
   <div class="nav nav-pills  dash-nav_tab">
-    <a class="nav-link" [ngClass]="tabs==''?'active':''" (click)="sidebar('')" [routerLink]="['/']">
+    <a class="nav-link" [ngClass]="tabs==''?'active':''" (click)="sidebar('','Dashboard')" [routerLink]="['/']">
       <i class="fas fa-home"></i>
       <span class="tab-text">Dashboard</span>
     </a>
-    <a class="nav-link" [ngClass]="tabs=='order'?'active':''" (click)="sidebar('order')" [routerLink]="['/order']">
+    <a class="nav-link" [ngClass]="tabs=='order'?'active':''" (click)="sidebar('order','Order')" [routerLink]="['/order']">
       <i class="fab fa-first-order-alt"></i>
       <span class="tab-text">Order</span>
     </a>
-    <a class="nav-link" [ngClass]="tabs=='product'?'active':''" (click)="sidebar('product')" [routerLink]="['/product']">
+    <a class="nav-link" [ngClass]="tabs=='product'?'active':''" (click)="sidebar('product','Product')" [routerLink]="['/product']">
       <i class="fab fa-product-hunt"></i>
       <span class="tab-text">Products</span>
     </a>
-    <a class="nav-link" [ngClass]="tabs=='reports'?'active':''" (click)="sidebar('reports')" [routerLink]="['/reports']">
+    <a class="nav-link" [ngClass]="tabs=='reports'?'active':''" (click)="sidebar('reports','Reports')" [routerLink]="['/reports']">
       <i class="far fa-flag"></i>
       <span class="tab-text">Reports</span>
     </a>

@@ -1,16 +1,8 @@
-<header class="main-header" [ngClass]="toggle==0?'full-header':''">
+<header class="main-header" [ngClass]="toggle==1?'full-header':''">
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg">
-      <div class="dashboard-toggler">
-        <button class="btn btn-icon dash-toggler_icon" (click)="sidebartoggle(toggle)">
-          <svg viewBox="0 0 26 26" version="1.1" width="20px" height="20px" fill="#272e40">
-            <g id="surface1">
-              <path d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z " />
-            </g>
-          </svg>
-        </button>
-
-        <h4>Softpedia</h4>
+      <div class="dashboard-title">
+        <h4 class="page_title">{{title==null?'Dashboard':title}}</h4>
       </div>
 
       <!-- <div class="navbar-brand">
@@ -20,9 +12,9 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+            <a class="nav-link dropdown-toggle border border-primary" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
-              SOFTPEDIA EDITOR
+              Softpedia editor
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="#">Action</a>

@@ -24,6 +24,8 @@ export class AppComponent {
 
   constructor(private router: Router, toasterService: ToasterService) {
     this.toasterService = toasterService;
+    localStorage.removeItem('sidebartoggle');
+    // localStorage.removeItem('title');
   }
 
   ngOnInit() {
