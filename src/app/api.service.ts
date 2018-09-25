@@ -12,7 +12,8 @@ export class ApiService {
   header: any = myGlobals.header;
   api_url: any = myGlobals.api_url;
 
-  ExcelinsertAPI: any = myGlobals.ExcelinsertAPI;
+  excelinsertapi: any = myGlobals.ExcelinsertAPI;
+  chartapi: any = myGlobals.ChartAPI;
 
   // userid: any = localStorage.getItem('id');
   // useremail: any = localStorage.getItem('email');
@@ -21,7 +22,7 @@ export class ApiService {
 
   /* EXCEL SHEET UPLOAD AND SAVE DATA */
   insertdata(data): Observable<any> {
-    const endpoint = this.api_url;
+    const endpoint = this.api_url + this.excelinsertapi;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -29,6 +30,21 @@ export class ApiService {
       })
     };
     var idata = { 'product': data};
+
+    return this.http.post(endpoint, idata, httpOptions).pipe(
+      map((res: any) => res));
+  }
+
+  chartdata(): Observable<any> {
+    const endpoint = this.api_url + this.chartapi;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'header': this.header
+      })
+    };
+
+    var idata = { 'product': '' };
 
     return this.http.post(endpoint, idata, httpOptions).pipe(
       map((res: any) => res));
