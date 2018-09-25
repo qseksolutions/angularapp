@@ -15,7 +15,10 @@ export class HeaderComponent implements OnInit {
   
   constructor() {
     this.url = this.url.substr(1);
-    if(this.url != this.title.toLowerCase()) {
+    if (this.title == null) {
+      this.title = '';
+    }
+    if (this.url != this.title.toLowerCase()) {
       if(this.url == '') {
         this.title = 'Dashboard';
       }

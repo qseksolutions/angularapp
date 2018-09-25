@@ -5,7 +5,6 @@ import { ApiService } from '../api.service';
 import { ToasterService } from 'angular2-toaster';
 import { Chart } from 'chart.js';
 
-
 declare var $;
 
 @Component({
@@ -25,22 +24,41 @@ export class HomeComponent implements OnInit {
   arrayBuffer: any;
   file: File;
   linechart: any;
+  chartdata: any;
+  loader: boolean = false;
 
   constructor(private apiservice: ApiService, private router: Router, toasterService: ToasterService) {
     this.toasterService = toasterService;
   }
 
   ngOnInit() {
-    /* this.apiservice.getcurrencylist().subscribe(data => {
-      console.log(data);
-    }); */
-    
+    this.apiservice.chartdata().subscribe(data => {
+      if(data.status == true) {
+        let temparry = { 'month': [], 'courier': [], 'coustomer': [], 'na': []};
+        for (let i = 0; i < data.data.length; i++) {
+          temparry['month'][i] = data.data[i]['order_date'];
+          temparry['courier'][i] = data.data[i]['courier'];
+          temparry['coustomer'][i] = data.data[i]['coustomer'];
+          temparry['na'][i] = data.data[i]['na'];
+        }
+        this.chartdata = temparry;
+        this.loader = true;
+        if (temparry) {
+          this.generatechart(this.chartdata);
+        }
+      }
+      else {
+        this.toasterService.pop('error', 'Error', data.message);
+      }
+    });
+  }
+
+  generatechart(cdata) {
     var data = {
-      
-      labels: ["April", "May", "June", "July", "August", "September"],
+      labels: cdata.month,
       datasets: [
         {
-          label: "Harpo",
+          label: "Courier",
           backgroundColor: [
             'rgba(54, 162, 235, 1)',
             'rgba(54, 162, 235, 1)',
@@ -52,10 +70,10 @@ export class HomeComponent implements OnInit {
           fill: true,
           borderColor: "#3cba9f",
           borderWidth: 0,
-          data: [35, 30, 40, 20, 47, 30]
+          data: cdata.courier
         },
         {
-          label: "Chico",
+          label: "Coustomer",
           backgroundColor: [
             'rgba(255, 99, 132, 1)',
             'rgba(255, 99, 132, 1)',
@@ -68,10 +86,10 @@ export class HomeComponent implements OnInit {
           fill: true,
           borderColor: "#3cba9f",
           borderWidth: 0,
-          data: [75, 40, 31, 70, 30, 70]
+          data: cdata.coustomer
         },
         {
-          label: "Groucho",
+          label: "NA",
           backgroundColor: [
             'rgba(75, 192, 192, 1)',
             'rgba(75, 192, 192, 1)',
@@ -83,7 +101,7 @@ export class HomeComponent implements OnInit {
           fill: true,
           borderColor: "#3cba9f",
           borderWidth: 0,
-          data: [35, 70, 47, 30, 70, 40]
+          data: cdata.na
         }
       ],
     };
@@ -97,7 +115,7 @@ export class HomeComponent implements OnInit {
             borderWidth: 0,
           }
         },
-        
+
         tooltips: {
           mode: 'index',
           intersect: true,
@@ -106,12 +124,13 @@ export class HomeComponent implements OnInit {
             label: function (tooltipItem, data) {
               let Harpo = data.datasets[tooltipItem.datasetIndex].label;
               let valor = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-              let total = 0;              
+              let total = 0;
               if (tooltipItem.datasetIndex != data.datasets.length - 1) {
-                return Harpo + " : $" + valor;
+                return Harpo + " : " + valor;
                 // return Harpo + " : $" + valor.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
               } else {
-                return [Harpo + " : $" + valor, "Total : $" + total];
+                return [Harpo + " : " + valor];
+                // return [Harpo + " : $" + valor, "Total : $" + total];
                 // return [Harpo + " : $" + valor.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'), "Total : $" + total];
               }
             }
