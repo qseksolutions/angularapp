@@ -667,6 +667,75 @@ to {
     width: 100%;
     text-align: center;
 }
+.card-datepicker .dropdown-toggle::after{
+	display: none;
+}
+.card-datepicker .dropdown-menu {
+	border: none;
+	margin-top: 10px;
+}
+.card-datepicker .dropdown-menu.show:after {
+	right: unset;
+	left: 15px;
+}
+.custom-day {
+	text-align: center;
+	padding: 0.185rem 0.25rem;
+	display: inline-block;
+	height: 2rem;
+	width: 2rem;
+	color: #a5a5a5;
+	transition: all 0.15s ease-in-out;
+	font-size: 14px;
+    line-height: 26px;
+}
+.custom-day.focused {
+	background-color: #e6e6e6;
+}
+.custom-day.range, .custom-day:hover {
+	background-color: rgb(25, 140, 255);
+	color: white;
+}
+.custom-day.faded {
+	background-color: rgba(25, 140, 255,0.5);
+}
+ngb-datepicker{
+	border:none;
+}
+.ngb-dp-weekday {
+	font-style: normal !important;
+}
+.ngb-dp-months{
+	padding:0 !important;
+}
+.date-range-quick-options ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+	width: 100%;
+	display: table;
+	border-bottom: 1px solid #dadada;
+}
+.date-range-quick-options ul li {
+	display: table-cell;
+	background-color: #f8f9fa;
+	padding: 8px 10px;
+	font-size: 12px;
+	border-right: 1px solid #dadada;
+	cursor: pointer;
+	transition: all 0.2s linear;
+}
+.date-range-quick-options ul li:last-child {
+	border-right: none;
+}
+.date-range-quick-options ul li:hover {
+	background-color: #198cff;
+	color: #fff;
+}
+.ngb-dp-weekday[_ngcontent-c9] {
+	color: #666 !important;
+}
 /*product-end*/
 
 /*login-start*/

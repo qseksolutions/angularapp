@@ -32,17 +32,43 @@
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-                  <!-- <div class="form-group">
-                    <div class="input-group">
-                      <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                      <div class="input-group-append">
-                        <button class="btn btn-icon btn-calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                  <ng-container>
+                    <div ngbDropdown class="form-group card-datepicker" (openChange)="openChange($event)" placement="bottom-left" [autoClose]="'outside'" #myDrop="ngbDropdown">
+                      <div class="input-group" ngbDropdownToggle>
+                        <div class="form-control">
+                          <span *ngIf="from && to">{{from}} - {{to}}</span>
+                          <span *ngIf="!from && !to">Set period</span>
+                        </div>
+                        <div class="input-group-append">
+                          <button class="btn btn-icon btn-calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+                        </div>
+                      </div>
+
+                      <div ngbDropdownMenu class="p-0 date-range-dropdown animation-duration-200 animation-scale-up animation-top-right">
+                        <ngb-datepicker #dp ngModel [displayMonths]="2" [dayTemplate]="t" [navigation]="'arrows'">
+                        </ngb-datepicker>
                       </div>
                     </div>
-                  </div> -->
-                  <ngb-datepicker [displayMonths]="displayMonths" [navigation]="navigation" [showWeekNumbers]="showWeekNumbers" [outsideDays]="outsideDays">
-                  </ngb-datepicker>
+                    <!-- <div ngbDropdown class="" (openChange)="openChange($event)" placement="bottom-left" [autoClose]="'outside'" #myDrop="ngbDropdown">
+                      <button class="btn btn-primary mt-3" ngbDropdownToggle>
+                        <span *ngIf="from && to">{{from}} - {{to}}</span>
+                        <span *ngIf="!from && !to">Set period</span>
+                      </button>
+                      <div ngbDropdownMenu class="m-0 p-0 date-range-dropdown animation-duration-200 animation-scale-up animation-top-right">
+                        <ngb-datepicker #dp ngModel [displayMonths]="2" [dayTemplate]="t" [navigation]="'arrows'">
+                        </ngb-datepicker>
+                      </div>
+                    </div> -->
+                  
+                  
+                    <ng-template #t let-date="date" let-focused="focused">
+                      <span class="custom-day" (click)="dateChange(date)" [class.focused]="focused" [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+                        [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                        {{ date.day }}
+                      </span>
+                    </ng-template>
+                  </ng-container>
                 </div>
               </div>
               <div class="row">

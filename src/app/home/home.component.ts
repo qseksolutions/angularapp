@@ -1,9 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 import * as XLSX from 'xlsx';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { ToasterService } from 'angular2-toaster';
 import { Chart } from 'chart.js';
+import { NgbDateStruct, NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import * as moment from 'moment';
+
+const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
+  one && two && two.year === one.year && two.month === one.month && two.day === one.day;
+
+const before = (one: NgbDateStruct, two: NgbDateStruct) =>
+  !one || !two ? false : one.year === two.year ? one.month === two.month ? one.day === two.day
+    ? false : one.day < two.day : one.month < two.month : one.year < two.year;
+
+const after = (one: NgbDateStruct, two: NgbDateStruct) =>
+  !one || !two ? false : one.year === two.year ? one.month === two.month ? one.day === two.day
+    ? false : one.day > two.day : one.month > two.month : one.year > two.year;
+
 
 declare var $;
 
@@ -12,9 +26,15 @@ declare var $;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   providers: [ApiService],
+ 
 })
-export class HomeComponent implements OnInit {
-
+export class HomeComponent implements OnInit, OnChanges {
+  
+  @Output() onOpenChange = new EventEmitter<boolean>();
+  @Output() onDateChange = new EventEmitter<any>();
+  from: any;
+  to: any;
+  @ViewChild('myDrop') dropdown: any;
   private toasterService: ToasterService;
   totalcount: any;
   toggle = localStorage.getItem('sidebartoggle');
@@ -27,30 +47,92 @@ export class HomeComponent implements OnInit {
   chartdata: any;
   loader: boolean = false;
 
-  constructor(private apiservice: ApiService, private router: Router, toasterService: ToasterService) {
+  hoveredDate: NgbDateStruct;
+  fromDate: NgbDateStruct;
+  toDate: NgbDateStruct;
+
+  constructor(private apiservice: ApiService, private router: Router, toasterService: ToasterService, private calendar: NgbCalendar,
+    private ngbDateParserFormatter: NgbDateParserFormatter) {
     this.toasterService = toasterService;
   }
 
+
+  ngOnChanges() {
+    if (this.from && this.to) {
+      this.fromDate = this.ngbDateParserFormatter.parse(this.from);
+      this.toDate = this.ngbDateParserFormatter.parse(this.to);
+    }
+  }
+
+  isHovered = date => this.fromDate && !this.toDate && this.hoveredDate && after(date, this.fromDate) && before(date, this.hoveredDate);
+  isInside = date => after(date, this.fromDate) && before(date, this.toDate);
+  isFrom = date => equals(date, this.fromDate);
+  isTo = date => equals(date, this.toDate);
+
+  openChange(event) {
+    this.onOpenChange.emit(event);
+  }
+
+  dateChange(date: NgbDateStruct) {
+    if (!this.fromDate && !this.toDate) {
+      this.fromDate = date;
+    } else if (this.fromDate && !this.toDate && this.isAfterOrSame(date, this.fromDate)) {
+      this.toDate = date;
+    } else {
+      this.toDate = null;
+      this.fromDate = date;
+    }
+    console.log(this.fromDate);
+    console.log(this.toDate);
+    this.pushDate();
+  }
+
+  private pushDate() {
+    if (this.fromDate && this.toDate) {
+      this.from = this.ngbDateParserFormatter.format(this.fromDate);
+      this.to = this.ngbDateParserFormatter.format(this.toDate);
+      this.onDateChange.emit({ from: this.from, to: this.to });
+      this.dropdown.close();
+    }
+  }
+
+  private isAfterOrSame(one: NgbDateStruct, two: NgbDateStruct) {
+    if (!one || !two) {
+      return false;
+    }
+
+    let parsedFrom = this.ngbDateParserFormatter.format(one);
+    let parsedTo = this.ngbDateParserFormatter.format(two);
+    if (moment(parsedFrom).isAfter(parsedTo) || moment(parsedFrom).isSame(parsedTo)) {
+      return true;
+    }
+
+    return false;
+  }
   ngOnInit() {
-    this.apiservice.chartdata().subscribe(data => {
-      if(data.status == true) {
-        let temparry = { 'month': [], 'courier': [], 'coustomer': [], 'na': []};
-        for (let i = 0; i < data.data.length; i++) {
-          temparry['month'][i] = data.data[i]['order_date'];
-          temparry['courier'][i] = data.data[i]['courier'];
-          temparry['coustomer'][i] = data.data[i]['coustomer'];
-          temparry['na'][i] = data.data[i]['na'];
-        }
-        this.chartdata = temparry;
-        this.loader = true;
-        if (temparry) {
-          this.generatechart(this.chartdata);
-        }
-      }
-      else {
-        this.toasterService.pop('error', 'Error', data.message);
-      }
-    });
+    // this.apiservice.chartdata().subscribe(data => {
+    //   if(data.status == true) {
+    //     let temparry = { 'month': [], 'courier': [], 'coustomer': [], 'na': []};
+    //     for (let i = 0; i < data.data.length; i++) {
+    //       temparry['month'][i] = data.data[i]['order_date'];
+    //       temparry['courier'][i] = data.data[i]['courier'];
+    //       temparry['coustomer'][i] = data.data[i]['coustomer'];
+    //       temparry['na'][i] = data.data[i]['na'];
+    //     }
+    //     this.chartdata = temparry;
+    //     this.loader = true;
+    //     if (temparry) {
+    //       this.generatechart(this.chartdata);
+    //     }
+    //   }
+    //   else {
+    //     this.toasterService.pop('error', 'Error', data.message);
+    //   }
+    // });
+    if (this.from && this.to) {
+      this.fromDate = this.ngbDateParserFormatter.parse(this.from);
+      this.toDate = this.ngbDateParserFormatter.parse(this.to);
+    }
   }
 
   generatechart(cdata) {
@@ -89,7 +171,7 @@ export class HomeComponent implements OnInit {
           data: cdata.coustomer
         },
         {
-          label: "NA",
+          label: "Sell product",
           backgroundColor: [
             'rgba(75, 192, 192, 1)',
             'rgba(75, 192, 192, 1)',
