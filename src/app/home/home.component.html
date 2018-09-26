@@ -71,7 +71,12 @@
                   </ng-container>
                 </div>
               </div>
-              <div class="row">
+              <div class="row" *ngIf="!statistics">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3 m-auto">
+                  <img class="img-fluid" src="../../assets/images/chart-loader.gif" />
+                </div>
+              </div>
+              <div class="row" *ngIf="statistics">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-3">
                   <div class="card">
                     <div class="card-header">
@@ -81,19 +86,19 @@
                       <ul class="list-unstyled calc-list">
                         <li>
                           <label class="calc-label">Sell Product</label>
-                          <h6 class="calc-value">10</h6>
+                          <h6 class="calc-value">{{statistics.sale_product}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Courier return</label>
-                          <h6 class="calc-value">1</h6>
+                          <h6 class="calc-value">{{statistics.courier_return}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Customer return</label>
-                          <h6 class="calc-value">1</h6>
+                          <h6 class="calc-value">{{statistics.customer_return}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Total</label>
-                          <h6 class="calc-value">8</h6>
+                          <h6 class="calc-value">{{statistics.sale_product + statistics.courier_return + statistics.customer_return}}</h6>
                         </li>
                       </ul>
                     </div>
@@ -109,19 +114,19 @@
                       <ul class="list-unstyled calc-list">
                         <li>
                           <label class="calc-label">Sell Product</label>
-                          <h6 class="calc-value">₹ 150</h6>
+                          <h6 class="calc-value">₹ {{statistics.sale_amout}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Courier return</label>
-                          <h6 class="calc-value">₹ 15</h6>
+                          <h6 class="calc-value">₹ {{statistics.courier_amout}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Customer return</label>
-                          <h6 class="calc-value">₹ 15</h6>
+                          <h6 class="calc-value">₹ {{statistics.customer_amout}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Total</label>
-                          <h6 class="calc-value">₹ 120</h6>
+                          <h6 class="calc-value">₹ {{statistics.sale_amout + statistics.courier_amout + statistics.customer_amout}}</h6>
                         </li>
                       </ul>
                     </div>
@@ -137,19 +142,19 @@
                       <ul class="list-unstyled calc-list">
                         <li>
                           <label class="calc-label">Sell Product</label>
-                          <h6 class="calc-value text-danger">₹ 15</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.sale_market_fee<0?'text-danger':''">₹ {{statistics.sale_market_fee}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Courier return</label>
-                          <h6 class="calc-value text-danger">₹ 1.5</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.courier_market_fee<0?'text-danger':''">₹ {{statistics.courier_market_fee}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Customer return</label>
-                          <h6 class="calc-value text-danger">₹ 1.5</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.customer_market_fee<0?'text-danger':''">₹ {{statistics.customer_market_fee}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Total</label>
-                          <h6 class="calc-value text-danger">₹ 12</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.sale_market_fee + statistics.courier_market_fee + statistics.customer_market_fee<0?'text-danger':''">₹ {{statistics.sale_market_fee + statistics.courier_market_fee + statistics.customer_market_fee}}</h6>
                         </li>
                       </ul>
                     </div>
@@ -165,19 +170,19 @@
                       <ul class="list-unstyled calc-list">
                         <li>
                           <label class="calc-label">Sell Product</label>
-                          <h6 class="calc-value">₹ 135</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.sale_taxes<0?'text-danger':''">₹ {{statistics.sale_taxes}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Courier return</label>
-                          <h6 class="calc-value">₹ 13.5</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.courier_taxes<0? 'text-danger': '' ">₹ {{statistics.courier_taxes}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Customer return</label>
-                          <h6 class="calc-value">₹ 13.5</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.customer_taxes<0? 'text-danger': '' ">₹ {{statistics.customer_taxes}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Total</label>
-                          <h6 class="calc-value">₹ 108</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.sale_taxes + statistics.courier_taxes + statistics.customer_taxes<0? 'text-danger': '' ">₹ {{statistics.sale_taxes + statistics.courier_taxes + statistics.customer_taxes}}</h6>
                         </li>
                       </ul>
                     </div>
@@ -193,19 +198,19 @@
                       <ul class="list-unstyled pl-list">
                         <li class="minus-value">
                           <label class="calc-label">Sell Product</label>
-                          <h6 class="calc-value">₹ 135</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.sale_profit<0? 'text-danger': '' ">₹ {{statistics.sale_profit}}</h6>
                         </li>
                         <li class="minus-value">
                           <label class="calc-label ">Courier return</label>
-                          <h6 class="calc-value text-danger">₹ 13.5</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.courier_profit<0? 'text-danger': '' ">₹ {{statistics.courier_profit}}</h6>
                         </li>
                         <li class="equal-value">
                           <label class="calc-label">Customer return</label>
-                          <h6 class="calc-value text-danger">₹ 13.5</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.customer_profit<0? 'text-danger': '' ">₹ {{statistics.customer_profit}}</h6>
                         </li>
                         <li>
                           <label class="calc-label">Total</label>
-                          <h6 class="calc-value">₹ 108</h6>
+                          <h6 class="calc-value" [ngClass]="statistics.sale_profit + statistics.courier_profit + statistics.customer_profit<0? 'text-danger': '' ">₹ {{statistics.sale_profit + statistics.courier_profit + statistics.customer_profit}}</h6>
                         </li>
                       </ul>
                     </div>

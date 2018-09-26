@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit, OnChanges {
   file: File;
   linechart: any;
   chartdata: any;
+  statistics: any;
   loader: boolean = false;
 
   hoveredDate: NgbDateStruct;
@@ -54,8 +55,57 @@ export class HomeComponent implements OnInit, OnChanges {
   constructor(private apiservice: ApiService, private router: Router, toasterService: ToasterService, private calendar: NgbCalendar,
     private ngbDateParserFormatter: NgbDateParserFormatter) {
     this.toasterService = toasterService;
+    var d = new Date();
+    var month = d.getMonth() + 1;
+    var day = d.getDate();
+    var fromdate = d.getFullYear() + '-' +
+      (month < 10 ? '0' : '') + month + '-' +
+      (day < 10 ? '0' : '') + day;
+    this.from = fromdate;
+    var month = d.getMonth() + 2;
+    var day = d.getDate();
+    var todate = d.getFullYear() + '-' +
+      (month < 10 ? '0' : '') + month + '-' +
+      (day < 10 ? '0' : '') + day;
+    this.to = todate;
   }
 
+  ngOnInit() {
+    /* STATISTICS FOR DASHBOARD */
+    this.apiservice.statistics(this.from,this.to).subscribe(res => {
+      if (res.status == true) {
+        this.statistics = res.data;
+      }
+      else {
+        this.toasterService.pop('error', 'Error', res.message);
+      }
+    });
+
+    /* CHARTDATA FOR DASHBOARD */
+    this.apiservice.chartdata().subscribe(data => {
+      if (data.status == true) {
+        let temparry = { 'month': [], 'courier': [], 'coustomer': [], 'na': [] };
+        for (let i = 0; i < data.data.length; i++) {
+          temparry['month'][i] = data.data[i]['order_date'];
+          temparry['courier'][i] = data.data[i]['courier'];
+          temparry['coustomer'][i] = data.data[i]['coustomer'];
+          temparry['na'][i] = data.data[i]['na'];
+        }
+        this.chartdata = temparry;
+        this.loader = true;
+        if (temparry) {
+          this.generatechart(this.chartdata);
+        }
+      }
+      else {
+        this.toasterService.pop('error', 'Error', data.message);
+      }
+    });
+    if (this.from && this.to) {
+      this.fromDate = this.ngbDateParserFormatter.parse(this.from);
+      this.toDate = this.ngbDateParserFormatter.parse(this.to);
+    }
+  }
 
   ngOnChanges() {
     if (this.from && this.to) {
@@ -108,31 +158,6 @@ export class HomeComponent implements OnInit, OnChanges {
     }
 
     return false;
-  }
-  ngOnInit() {
-    this.apiservice.chartdata().subscribe(data => {
-      if(data.status == true) {
-        let temparry = { 'month': [], 'courier': [], 'coustomer': [], 'na': []};
-        for (let i = 0; i < data.data.length; i++) {
-          temparry['month'][i] = data.data[i]['order_date'];
-          temparry['courier'][i] = data.data[i]['courier'];
-          temparry['coustomer'][i] = data.data[i]['coustomer'];
-          temparry['na'][i] = data.data[i]['na'];
-        }
-        this.chartdata = temparry;
-        this.loader = true;
-        if (temparry) {
-          this.generatechart(this.chartdata);
-        }
-      }
-      else {
-        this.toasterService.pop('error', 'Error', data.message);
-      }
-    });
-    if (this.from && this.to) {
-      this.fromDate = this.ngbDateParserFormatter.parse(this.from);
-      this.toDate = this.ngbDateParserFormatter.parse(this.to);
-    }
   }
 
   generatechart(cdata) {
@@ -306,6 +331,8 @@ export class HomeComponent implements OnInit, OnChanges {
       this.data = tempArray;
       this.totalcount = this.data.length;
       console.log(this.data);
+
+      /* EXCEL SHEET UPLOAD AND SAVE DATA */
       this.apiservice.insertdata(this.data[0]).subscribe(data => {
         if (data.status == true) {
           this.count++;
@@ -330,6 +357,7 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
   insertdata(data) {
+    /* EXCEL SHEET UPLOAD AND SAVE DATA */
     this.apiservice.insertdata(data).subscribe(data => {
       if (data.status == true) {
         this.count++;

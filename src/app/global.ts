@@ -4,6 +4,7 @@ export const api_url = 'https://qseksolutions.com/api/example/';
 
 export const ExcelinsertAPI = 'insert';
 export const ChartAPI = 'monthly_stat';
+export const StatisticsAPI = 'getstatistics';
 
 // export const login_ses = localStorage.getItem('login_ses');
 // export const userid = localStorage.getItem('id');
