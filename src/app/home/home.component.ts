@@ -56,13 +56,13 @@ export class HomeComponent implements OnInit, OnChanges {
     private ngbDateParserFormatter: NgbDateParserFormatter) {
     this.toasterService = toasterService;
     var d = new Date();
-    var month = d.getMonth() + 1;
+    var month = d.getMonth();
     var day = d.getDate();
     var fromdate = d.getFullYear() + '-' +
       (month < 10 ? '0' : '') + month + '-' +
       (day < 10 ? '0' : '') + day;
     this.from = fromdate;
-    var month = d.getMonth() + 2;
+    var month = d.getMonth() + 1;
     var day = d.getDate();
     var todate = d.getFullYear() + '-' +
       (month < 10 ? '0' : '') + month + '-' +
