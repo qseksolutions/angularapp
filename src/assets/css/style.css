@@ -634,8 +634,8 @@ to {
 	border-right: solid 1px #e5e8eb;
 	position: relative;
 }
-.minus-value:after {
-    content: "-";
+.minus-value:after ,
+.equal-value:after {
     position: absolute;
     right: -8px;
     top: calc(50% - 8px);
@@ -646,6 +646,15 @@ to {
     font-size: 62px;
     color: #f04;
     font-weight: 300;
+}
+.minus-value:after {
+	content: "-";
+}
+.equal-value:after {
+    content: "=";
+    font-size: 40px;
+    line-height: 14px;
+    right: -7px;
 }
 .pl-list > li:last-child {
 	border-right: none;

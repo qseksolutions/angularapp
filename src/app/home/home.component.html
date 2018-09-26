@@ -41,7 +41,7 @@
                       </div>
                     </div>
                   </div> -->
-                  <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t">
+                  <ngb-datepicker [displayMonths]="displayMonths" [navigation]="navigation" [showWeekNumbers]="showWeekNumbers" [outsideDays]="outsideDays">
                   </ngb-datepicker>
                 </div>
               </div>
@@ -165,7 +165,7 @@
                     </div>
                     <div class="card-body">
                       <ul class="list-unstyled pl-list">
-                        <li>
+                        <li class="minus-value">
                           <label class="calc-label">Sell Product</label>
                           <h6 class="calc-value">₹ 135</h6>
                         </li>
@@ -173,7 +173,7 @@
                           <label class="calc-label ">Courier return</label>
                           <h6 class="calc-value text-danger">₹ 13.5</h6>
                         </li>
-                        <li class="minus-value">
+                        <li class="equal-value">
                           <label class="calc-label">Customer return</label>
                           <h6 class="calc-value text-danger">₹ 13.5</h6>
                         </li>
