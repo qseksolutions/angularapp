@@ -46,7 +46,7 @@
                       </div>
 
                       <div ngbDropdownMenu class="p-0 date-range-dropdown animation-duration-200 animation-scale-up animation-top-right">
-                        <ngb-datepicker #dp ngModel [displayMonths]="2" [dayTemplate]="t" [navigation]="'arrows'">
+                        <ngb-datepicker #dp ngModel (click)="dateChange(date)" [displayMonths]="2" [dayTemplate]="t" [navigation]="'arrows'">
                         </ngb-datepicker>
                       </div>
                     </div>
