@@ -58,15 +58,11 @@ export class HomeComponent implements OnInit, OnChanges {
     var d = new Date();
     var month = d.getMonth();
     var day = d.getDate();
-    var fromdate = d.getFullYear() + '-' +
-      (month < 10 ? '0' : '') + month + '-' +
-      (day < 10 ? '0' : '') + day;
+    var fromdate = d.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
     this.from = fromdate;
     var month = d.getMonth() + 1;
     var day = d.getDate();
-    var todate = d.getFullYear() + '-' +
-      (month < 10 ? '0' : '') + month + '-' +
-      (day < 10 ? '0' : '') + day;
+    var todate = d.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
     this.to = todate;
   }
 
@@ -132,9 +128,18 @@ export class HomeComponent implements OnInit, OnChanges {
       this.toDate = null;
       this.fromDate = date;
     }
-    console.log(this.fromDate);
-    console.log(this.toDate);
     this.pushDate();
+    if (this.fromDate && this.toDate) {
+      this.statistics = '';
+      this.apiservice.statistics(this.from, this.to).subscribe(res => {
+        if (res.status == true) {
+          this.statistics = res.data;
+        }
+        else {
+          this.toasterService.pop('error', 'Error', res.message);
+        }
+      });
+    }
   }
 
   private pushDate() {
