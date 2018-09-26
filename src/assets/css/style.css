@@ -19,6 +19,7 @@ body {
 	line-height: 13px;
 	height: unset;
 	padding: 10px 20px;
+	border-color: #e5e8eb;
 } 
 input::-webkit-input-placeholder { 
 	font-size: 13px;
@@ -89,8 +90,11 @@ a:hover ,
 	border-color: #959698;
 	opacity: 1;
 }
-section {
-	position: relative;
+.btn-calendar {
+    border: solid 1px #ced4da;
+    padding: 5px 15px;
+    background-color: #f3f3f3;
+    color: #333;
 }
 .btn.focus, .btn:focus ,button:focus{
 	outline: 0;
@@ -98,13 +102,17 @@ section {
 	box-shadow: none;
 } 
 .border-primary {
-    border-color: #198cff !important;
+	border-color: #198cff !important;
 }
 .border-primary:hover  ,
 .border-primary:focus {
 	background-color: #f4f8f9;
 	border-color: #0d58d9 !important; 
 } 
+
+section {
+	position: relative;
+}
 /*header-start*/
 .main-header {
 	background-color: #ffffff;
@@ -613,6 +621,42 @@ to {
 	width: 50%;
 	text-align: right;
 	font-weight: 600;
+}
+.pl-list {
+    margin-bottom: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    display: flex;
+}
+.pl-list > li {
+    width: 25%;
+    text-align: center;
+	border-right: solid 1px #e5e8eb;
+	position: relative;
+}
+.minus-value:after {
+    content: "-";
+    position: absolute;
+    right: -8px;
+    top: calc(50% - 8px);
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    line-height: 8px;
+    font-size: 62px;
+    color: #f04;
+    font-weight: 300;
+}
+.pl-list > li:last-child {
+	border-right: none;
+}
+.pl-list > li .calc-label {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.pl-list > li .calc-value {
+    width: 100%;
+    text-align: center;
 }
 /*product-end*/
 
