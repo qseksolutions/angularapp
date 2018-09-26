@@ -96,6 +96,10 @@ a:hover ,
     background-color: #f3f3f3;
     color: #333;
 }
+.btn-calendar:hover ,
+.btn-calendar:focus {
+	background-color: #ced4da;
+} 
 .btn.focus, .btn:focus ,button:focus{
 	outline: 0;
 	-webkit-box-shadow: none;
@@ -283,6 +287,9 @@ to {
 .navbar-expand-lg .navbar-nav .nav-link {
 	padding-right: 15px;
 	padding-left: 15px;
+}
+.navbar-nav .nav-link.border {
+	border-width: 1.5px !important;
 }
 .main-header.fixed-header {
 	background: #198cff;
@@ -609,6 +616,10 @@ to {
 .calc-list li:first-child {
 	padding-top: 0px;
 }
+.calc-list li:last-child {
+	padding-bottom: 0px;
+	border-bottom: none;	
+}
 .calc-label {
 	margin-bottom: 0px;
 	width: 50%;
@@ -666,6 +677,13 @@ to {
 .pl-list > li .calc-value {
     width: 100%;
     text-align: center;
+}
+.card-datepicker {
+    width: 72%;
+}
+.card-datepicker .form-control {
+    white-space: nowrap;
+    padding: 10px 8px;
 }
 .card-datepicker .dropdown-toggle::after{
 	display: none;
