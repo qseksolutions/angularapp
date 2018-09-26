@@ -110,25 +110,25 @@ export class HomeComponent implements OnInit, OnChanges {
     return false;
   }
   ngOnInit() {
-    // this.apiservice.chartdata().subscribe(data => {
-    //   if(data.status == true) {
-    //     let temparry = { 'month': [], 'courier': [], 'coustomer': [], 'na': []};
-    //     for (let i = 0; i < data.data.length; i++) {
-    //       temparry['month'][i] = data.data[i]['order_date'];
-    //       temparry['courier'][i] = data.data[i]['courier'];
-    //       temparry['coustomer'][i] = data.data[i]['coustomer'];
-    //       temparry['na'][i] = data.data[i]['na'];
-    //     }
-    //     this.chartdata = temparry;
-    //     this.loader = true;
-    //     if (temparry) {
-    //       this.generatechart(this.chartdata);
-    //     }
-    //   }
-    //   else {
-    //     this.toasterService.pop('error', 'Error', data.message);
-    //   }
-    // });
+    this.apiservice.chartdata().subscribe(data => {
+      if(data.status == true) {
+        let temparry = { 'month': [], 'courier': [], 'coustomer': [], 'na': []};
+        for (let i = 0; i < data.data.length; i++) {
+          temparry['month'][i] = data.data[i]['order_date'];
+          temparry['courier'][i] = data.data[i]['courier'];
+          temparry['coustomer'][i] = data.data[i]['coustomer'];
+          temparry['na'][i] = data.data[i]['na'];
+        }
+        this.chartdata = temparry;
+        this.loader = true;
+        if (temparry) {
+          this.generatechart(this.chartdata);
+        }
+      }
+      else {
+        this.toasterService.pop('error', 'Error', data.message);
+      }
+    });
     if (this.from && this.to) {
       this.fromDate = this.ngbDateParserFormatter.parse(this.from);
       this.toDate = this.ngbDateParserFormatter.parse(this.to);
